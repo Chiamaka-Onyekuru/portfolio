@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiamaka Onyekuru · Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0c;
+    --paper: #faf8f4;
+    --warm-mid: #e8e2d8;
+    --accent: #c1440e;
+    --accent-light: #f5e8e3;
+    --muted: #7a7268;
+    --green: #2d6a4f;
+    --green-light: #e6f2ec;
+
+    --display: 'DM Serif Display', Georgia, serif;
+    --body: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 2.5rem;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--warm-mid);
+  }
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3rem 5rem 4rem;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 40ch;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: #fff;
+    padding: 0.8rem 1.8rem; border-radius: 2px;
+    font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.87; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1.5px solid var(--ink); color: var(--ink);
+    padding: 0.8rem 1.8rem; border-radius: 2px;
+    font-size: 0.88rem; font-weight: 600; letter-spacing: 0.04em;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ink);
+    position: relative; overflow: hidden;
+    padding: 4rem 3rem;
+  }
+  /* Decorative grid pattern */
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 39px, rgba(255,255,255,0.04) 39px, rgba(255,255,255,0.04) 40px
+    );
+  }
+  .hero-card {
+    position: relative; z-index: 2;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    padding: 2.5rem;
+    width: 100%; max-width: 380px;
+    color: #fff;
+  }
+  .card-label {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.5rem;
+  }
+  .card-value {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(255,255,255,0.1);
+    margin-bottom: 1px;
+  }
+  .stat-cell {
+    background: rgba(255,255,255,0.04);
+    padding: 1rem;
+  }
+  .stat-cell .n {
+    font-family: var(--display);
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-cell .l {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  .hero-tag {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: rgba(193,68,14,0.2);
+    color: #f4a27a;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-left {}
+  .about-text {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .about-text strong { color: var(--ink); font-weight: 600; }
+  .contact-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-list li { display: flex; align-items: center; gap: 0.75rem; }
+  .contact-list a {
+    font-size: 0.9rem; color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid var(--warm-mid); transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-list a:hover { color: var(--accent); border-color: var(--accent); }
+  .contact-icon { width: 1.5rem; text-align: center; color: var(--accent); font-size: 0.9rem; }
+
+  .skills-panel {
+    background: var(--ink); color: #fff;
+    padding: 2.5rem; border-radius: 2px;
+  }
+  .skills-panel h3 {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-weight: 400;
+  }
+  .skill-group { margin-bottom: 1.5rem; }
+  .skill-group-name {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 0.75rem;
+  }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.78rem; padding: 0.3rem 0.75rem;
+    border-radius: 2px; letter-spacing: 0.02em;
+  }
+  .chip.accent { background: rgba(193,68,14,0.25); border-color: rgba(193,68,14,0.4); color: #f4a27a; }
+
+  /* EXPERIENCE */
+  .experience-bg { background: var(--paper); }
+  .timeline { position: relative; margin-top: 3.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 160px; top: 0; bottom: 0;
+    width: 1px; background: var(--warm-mid);
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .tl-item::after {
+    content: '';
+    position: absolute;
+    left: 157px; top: 6px;
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .tl-date {
+    font-family: var(--mono);
+    font-size: 0.73rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    padding-top: 3px;
+    text-align: right;
+    padding-right: 1.5rem;
+    line-height: 1.5;
+  }
+  .tl-content {}
+  .tl-role {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .tl-company {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.85rem;
+  }
+  .tl-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .tl-points li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .tl-points li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--warm-mid);
+  }
+  .tl-achievement {
+    margin-top: 1rem;
+    background: var(--green-light);
+    border-left: 2px solid var(--green);
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--green);
+    border-radius: 0 2px 2px 0;
+    font-weight: 500;
+  }
+
+  /* CASE STUDY */
+  .case-study-section { background: var(--ink); }
+  .case-study-section h2, .case-study-section .section-label { color: rgba(255,255,255,0.9); }
+  .case-study-section .section-label { color: #f4a27a; }
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .case-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 2.2rem;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+  .case-card:hover { background: rgba(255,255,255,0.09); }
+  .case-tag {
+    font-family: var(--mono); font-size: 0.7rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #f4a27a;
+    margin-bottom: 1rem;
+  }
+  .case-card h3 {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .case-card p {
+    font-size: 0.88rem; color: rgba(255,255,255,0.5);
+    line-height: 1.7; margin-bottom: 1.5rem;
+  }
+  .case-metrics {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .metric {}
+  .metric .num {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .metric .desc {
+    font-size: 0.72rem; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em; line-height: 1.4; margin-top: 0.25rem;
+  }
+  .case-card-featured {
+    grid-column: span 2;
+    background: rgba(193,68,14,0.12);
+    border-color: rgba(193,68,14,0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .case-card-featured .flowwise-preview {
+    background: var(--ink);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+  }
+  .flowwise-header {
+    font-family: var(--display);
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .fw-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .fw-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+  .fw-row:last-child { border-bottom: none; }
+  .fw-val { color: rgba(255,255,255,0.8); }
+  .fw-tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .fw-chip { background: rgba(193,68,14,0.2); color: #f4a27a; font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 2px; letter-spacing: 0.04em; }
+
+  /* CERTS & EDUCATION */
+  .certs-edu { background: var(--accent-light); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .card-plain {
+    background: #fff;
+    border: 1px solid var(--warm-mid);
+    border-radius: 2px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-plain h4 {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .card-plain .meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--ink); }
+  .contact-section .section-label { color: #f4a27a; }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .contact-section h2 { color: #fff; }
+  .contact-section p { color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link-card {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1rem 1.5rem; border-radius: 2px;
+    text-decoration: none; color: #fff;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+  }
+  .contact-link-card:hover { background: rgba(255,255,255,0.1); }
+  .contact-link-card .icon { font-size: 1.1rem; opacity: 0.6; width: 1.5rem; }
+  .contact-link-card .detail { opacity: 0.5; font-size: 0.78rem; font-family: var(--mono); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--warm-mid);
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .hero-right { display: none; }
+    .container { padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+    .about-grid, .case-grid, .two-col, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .case-card-featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .timeline::before { left: 0; }
+    .tl-item { grid-template-columns: 1fr; padding-left: 1.5rem; }
+    .tl-item::after { left: -4px; }
+    .tl-date { text-align: left; padding-right: 0; padding-left: 0; margin-bottom: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Chiamaka Onyekuru</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Product Manager · Fintech & EdTech</div>
+    <h1>Building products<br>people <em>love</em><br>to use.</h1>
+    <p class="hero-sub">
+      Customer-obsessed PM with a sharp eye for user pain points and a track record of taking products from raw idea to functional reality · fast.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#work">See my work →</a>
+      <a class="btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-label">Current role</div>
+      <div class="card-value">Product Manager<br>@ 1Techlink Limited</div>
+      <div class="stat-row">
+        <div class="stat-cell"><div class="n">3</div><div class="l">Active product<br>verticals</div></div>
+        <div class="stat-cell"><div class="n">15%</div><div class="l">Sprint velocity<br>increase</div></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-cell"><div class="n">100+</div><div class="l">Customers<br>onboarded</div></div>
+        <div class="stat-cell"><div class="n">End→End</div><div class="l">Products built<br>from scratch</div></div>
+      </div>
+      <div class="hero-tag">Lagos, Nigeria · Fintech & EdTech</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="section-label">About me</div>
+        <h2>From the customer's<br>side of the screen</h2>
+        <p class="about-text">
+          I'm a certified Product Manager with hands-on experience leading end-to-end product development across <strong>Fintech</strong> and <strong>EdTech</strong> · two spaces where the stakes are high and the users are rarely forgiving. I build with user empathy at the centre, turning ambiguous problems into structured, developer-ready specifications.
+        </p>
+        <p class="about-text">
+          I lead discovery, roadmapping, and go-to-market strategy across three active product verticals, and I've independently shipped a consumer app prototype · from raw idea to live interactive demo. I also leverage AI tools to prototype UIs and scaffold codebases, making every team I work with faster.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon">✉</span>
+            <a href="mailto:onyekuru.chiamaka2000@gmail.com">onyekuru.chiamaka2000@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact-icon">📞</span>
+            <a href="tel:+2347044565244">+234 704 456 5244</a>
+          </li>
+          <li>
+            <span class="contact-icon">in</span>
+            <a href="https://www.linkedin.com/in/chiamaka-onyekuru-614848286" target="_blank">LinkedIn Profile</a>
+          </li>
+        </ul>
+      </div>
+      <div class="skills-panel">
+        <h3>What I bring to the table</h3>
+        <div class="skill-group">
+          <div class="skill-group-name">Core PM</div>
+          <div class="skill-chips">
+            <span class="chip accent">End-to-End Discovery</span>
+            <span class="chip accent">Product Roadmapping</span>
+            <span class="chip">PRDs & User Stories</span>
+            <span class="chip">Agile / Scrum</span>
+            <span class="chip">UAT Coordination</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Strategy & Research</div>
+          <div class="skill-chips">
+            <span class="chip">Competitive Analysis</span>
+            <span class="chip">Go-to-Market</span>
+            <span class="chip">Market Sizing</span>
+            <span class="chip">User Feedback Synthesis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">User & Market Research</div>
+          <div class="skill-chips">
+            <span class="chip">User Research</span>
+            <span class="chip">User Interviews</span>
+            <span class="chip">Wireframing</span>
+            <span class="chip">A/B Testing</span>
+            <span class="chip">Product-Market Fit</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Tools & Craft</div>
+          <div class="skill-chips">
+            <span class="chip">Jira</span>
+            <span class="chip">Trello</span>
+            <span class="chip">Figma (Basic)</span>
+            <span class="chip">ZOHO Desk</span>
+            <span class="chip">Dash CRM</span>
+            <span class="chip">Stakeholder Management</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">AI & Emerging Tools</div>
+          <div class="skill-chips">
+            <span class="chip accent">Claude</span>
+            <span class="chip accent">Cursor</span>
+            <span class="chip accent">Lovable</span>
+            <span class="chip">v0 by Vercel</span>
+            <span class="chip">Gamma</span>
+            <span class="chip">AI-Assisted Prototyping</span>
+            <span class="chip">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-name">Sectors</div>
+          <div class="skill-chips">
+            <span class="chip accent">Fintech</span>
+            <span class="chip accent">EdTech</span>
+            <span class="chip">Women's Health</span>
+            <span class="chip">Quick Commerce</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience-bg">
+  <div class="container">
+    <div class="section-label">Career</div>
+    <h2>Where I've been,<br>what I've built</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">Aug 2025<br>→ Present</div>
+        <div class="tl-content">
+          <div class="tl-role">Product Manager</div>
+          <div class="tl-company">1Techlink Limited · Lagos</div>
+          <ul class="tl-points">
+            <li>Leading end-to-end discovery and MVP definition for two Fintech apps · a Digital Lending platform and a Quick Commerce product.</li>
+            <li>Managing the iterative lifecycle of an enterprise LMS used by a live tech academy.</li>
+            <li>Authoring PRDs, user stories, and acceptance criteria across all three verticals.</li>
+            <li>Coordinating cross-functional alignment between engineering, design, and marketing through UAT cycles.</li>
+            <li>Synthesizing user feedback and market signals to guard roadmap focus and prevent scope creep.</li>
+          </ul>
+          <div class="tl-achievement">↑ 15% sprint velocity increase through optimised agile documentation</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Oct 2024<br>→ Jul 2025</div>
+        <div class="tl-content">
+          <div class="tl-role">PM Intern (NYSC)</div>
+          <div class="tl-company">1Techlink Limited · Lagos</div>
+          <ul class="tl-points">
+            <li>Established a structured customer feedback pipeline by analyzing insights from 100+ user interactions, influencing product improvements and roadmap prioritization.</li>
+            <li>Identified recurring user pain points from support tickets · 3 proposals escalated to the PM team were incorporated into the product roadmap.</li>
+            <li>Guided 100+ customers through onboarding workflows, reducing early-stage drop-off and improving product adoption and time-to-value.</li>
+            <li>Conducted user research interviews and synthesized findings into structured insight reports that shaped feature prioritization decisions.</li>
+          </ul>
+          <div class="tl-achievement">→ 3 product improvement proposals incorporated directly into the roadmap</div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES / WORK -->
+<section id="work" class="case-study-section">
+  <div class="container">
+    <div class="section-label">Featured work</div>
+    <h2>Products I've shaped</h2>
+    <div class="case-grid">
+
+      <!-- FlowWise · featured full-width -->
+      <a class="case-card case-card-featured" href="https://flow-wise-wellbeing.lovable.app" target="_blank">
+        <div>
+          <div class="case-tag">Personal Project · Women's Health · End-to-End</div>
+          <h3>FlowWise · AI-Powered Menstrual Health App</h3>
+          <p>Conceived and built entirely independently: from raw idea to competitive analysis, full PRD, and a live interactive prototype. FlowWise helps women track cycles, predict ovulation, and receive personalised AI wellness insights · calmly, and without the pink-washing typical of the category.</p>
+          <div class="case-metrics">
+            <div class="metric"><div class="num">0→1</div><div class="desc">Solo ideation<br>to live prototype</div></div>
+            <div class="metric"><div class="num">Full</div><div class="desc">PRD authored<br>& documented</div></div>
+            <div class="metric"><div class="num">AI</div><div class="desc">Cycle prediction<br>& insight engine</div></div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <span style="font-size:0.8rem;color:rgba(255,255,255,0.4);font-family:var(--mono);">View live prototype →</span>
+          </div>
+        </div>
+        <div class="flowwise-preview">
+          <div class="flowwise-header"><div class="fw-dot"></div> FlowWise Dashboard</div>
+          <div class="fw-row"><span>Cycle Day</span><span class="fw-val">14</span></div>
+          <div class="fw-row"><span>Fertility</span><span class="fw-val" style="color:#f4a27a">Peak</span></div>
+          <div class="fw-row"><span>Next period</span><span class="fw-val">14 days</span></div>
+          <div class="fw-row"><span>AI Insight</span><span class="fw-val">Active</span></div>
+          <div class="fw-tag-list">
+            <span class="fw-chip">Cycle tracking</span>
+            <span class="fw-chip">AI synthesis</span>
+            <span class="fw-chip">Symptom log</span>
+            <span class="fw-chip">Calendar</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- WeMeuve -->
+      <div class="case-card">
+        <div class="case-tag">Personal Project · Mobility · End-to-End</div>
+        <h3>WeMeuve · Ride-Hailing App</h3>
+        <p>Independently conceived and specified a ride-hailing application · from user research and competitive analysis through full PRD authorship, dual-persona (rider & driver) user journey mapping, and feature prioritization to a developer-ready specification.</p>
+        <div class="case-metrics">
+          <div class="metric"><div class="num">Full</div><div class="desc">PRD authored<br>& documented</div></div>
+          <div class="metric"><div class="num">2</div><div class="desc">User personas<br>mapped</div></div>
+        </div>
+      </div>
+
+      <!-- LMS -->
+      <div class="case-card">
+        <div class="case-tag">1Techlink · EdTech</div>
+        <h3>Enterprise Learning Management System</h3>
+        <p>Managing the iterative product lifecycle of an LMS actively used by a tech academy · balancing learner experience improvements with institutional admin needs across sprint cycles.</p>
+        <div class="case-metrics">
+          <div class="metric"><div class="num">3</div><div class="desc">Vertical PM<br>ownership</div></div>
+          <div class="metric"><div class="num">Agile</div><div class="desc">Sprint-by-sprint<br>iteration</div></div>
+        </div>
+      </div>
+
+      <!-- Digital Lending -->
+      <div class="case-card">
+        <div class="case-tag">1Techlink · Fintech · In Discovery</div>
+        <h3>Digital Lending & Quick Commerce Apps</h3>
+        <p>Leading full end-to-end discovery for two Fintech MVPs simultaneously · defining user personas, structuring problem statements, mapping user flows, and authoring PRDs that anchor engineering delivery.</p>
+        <div class="case-metrics">
+          <div class="metric"><div class="num">2</div><div class="desc">Fintech MVPs<br>in flight</div></div>
+          <div class="metric"><div class="num">PRD</div><div class="desc">Full functional<br>specs authored</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section class="certs-edu">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Education</div>
+        <h2>Foundation</h2>
+        <div class="card-plain">
+          <h4>BSc in English Education</h4>
+          <div class="meta">University of Nigeria, Nsukka · 2018 – 2023</div>
+        </div>
+        <div class="card-plain">
+          <h4>National Youth Service Corps (NYSC)</h4>
+          <div class="meta">Completed · 2025</div>
+        </div>
+        <div class="card-plain">
+          <h4>Peer Mentor & Student Association Coordinator</h4>
+          <div class="meta">Extracurricular · University of Nigeria</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Certifications</div>
+        <h2>Credentials</h2>
+        <div class="card-plain">
+          <h4>Product Management Certification</h4>
+          <div class="meta">Axia Africa · School of Product · August 2025 · Certificate ID: AX93693166</div>
+        </div>
+        <div class="card-plain">
+          <h4>Virtual Assistant Certification</h4>
+          <div class="meta">2025</div>
+        </div>
+        <div class="card-plain">
+          <h4>Member, Product Management Communities</h4>
+          <div class="meta">Local PM networks · Since 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2>Let's build<br>something real.</h2>
+        <p>I'm always open to conversations about product, Fintech, EdTech, and building things that matter. If you're working on something interesting, let's talk.</p>
+        <a class="btn-primary" href="mailto:onyekuru.chiamaka2000@gmail.com">Send me a message →</a>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link-card" href="mailto:onyekuru.chiamaka2000@gmail.com">
+          <span class="icon">✉</span>
+          <div>
+            <div>onyekuru.chiamaka2000@gmail.com</div>
+            <div class="detail">Email · Fastest response</div>
+          </div>
+        </a>
+        <a class="contact-link-card" href="tel:+2347044565244">
+          <span class="icon">📞</span>
+          <div>
+            <div>+234 704 456 5244</div>
+            <div class="detail">Phone · Lagos, Nigeria</div>
+          </div>
+        </a>
+        <a class="contact-link-card" href="https://www.linkedin.com/in/chiamaka-onyekuru-614848286" target="_blank">
+          <span class="icon">in</span>
+          <div>
+            <div>LinkedIn Profile</div>
+            <div class="detail">linkedin.com/in/chiamaka-onyekuru-614848286</div>
+          </div>
+        </a>
+        <a class="contact-link-card" href="https://flow-wise-wellbeing.lovable.app" target="_blank">
+          <span class="icon">🔗</span>
+          <div>
+            <div>FlowWise Live Prototype</div>
+            <div class="detail">flow-wise-wellbeing.lovable.app</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Chiamaka Onyekuru · Product Manager · Lagos, Nigeria</p>
+</footer>
+
+</body>
+</html>
